@@ -1,32 +1,17 @@
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
-{
-    int temp, set = -1;
-    scanf("%d", &temp);
+int set[10]={0,0,0,0,0,0,0,0,0,0};
 
-    float arr[10] = {0,};
-    while (temp > 0)
-    {
-        if ((temp % 10 == 9) or (temp % 10 == 6))
-        {
-            arr[6] += 0.5;
-        }
-        else arr[temp % 10]++;
-
-        temp /= 10;
-    }
-    
-    for (int i = 0; i < 10; i++)
-    {
-        if (set < arr[i])
-        {
-            set = arr[i];
-        }
-        
-    }
-    
-    printf("%d", set);
-
-    return 0;
+int main(){
+	int N,j,max=0;
+	scanf("%d",&N);
+	while(N!=0){
+		set[N%10]++;
+		N/=10;
+	}
+	set[6]=(set[6]+set[9]+1)/2;
+	for(j=0;j<9;j++)
+		if(max<set[j])max=set[j];
+	printf("%d",max);
+	return 0;
 }
